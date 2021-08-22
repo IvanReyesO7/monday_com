@@ -23,5 +23,3 @@ module Monday
   end
 end
 
-this = Monday::CLI.new
-this.call

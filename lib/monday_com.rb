@@ -1,5 +1,4 @@
 require 'open-uri'
-require 'nokogiri'
 require 'pry'
 
 require_relative './monday_com/version'
