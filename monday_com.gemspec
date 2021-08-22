@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Ivan Reyes"]
   spec.email         = ["ivanwilf@hotmail.com"]
 
-  spec.summary       = "TODO: Write a short summary, because RubyGems requires one."
-  spec.description   = "TODO: Write a longer description or delete this line."
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "Monday.com assigend tasks."
+  spec.description   = "A simple tool that enlist all of the assigned tasks on monday.com."
+  spec.homepage      = "https://github.com/IvanReyesO7"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
 
   spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
@@ -28,6 +28,14 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  # Added development dependencies as indicated here
+  # https://levelup.gitconnected.com/building-a-ruby-cli-gem-from-scratch-fca59acda169
+
+  spec.add_development_dependency "bundler"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "pry"
+  
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
 

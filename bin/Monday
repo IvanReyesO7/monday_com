@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "monday_com"
+
+
+Monday::CLI.new.call
