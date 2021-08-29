@@ -3,9 +3,14 @@ require_relative 'client'
 module Monday
   class CLI
     def call
+      verification?
       @client = Monday::Client.new
       greetings
       list_items
+    end
+
+    def verification
+
     end
 
     def greetings
