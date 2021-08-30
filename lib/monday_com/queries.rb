@@ -14,5 +14,9 @@ class Query
   def self.show_item(item)
     "{ items (ids: #{item}) { name column_values{title value}} }"
   end
+
+  def self.subscribers(board_id=1290326273)
+    "{ boards (ids: #{board_id}) { subscribers { id name }}}"
+  end
 end
 

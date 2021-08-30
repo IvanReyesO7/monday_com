@@ -1,12 +1,16 @@
 require_relative 'client'
+require_relative 'queries'
 
 module Monday
   class CLI
     def call
-      authentication
-      @client = Monday::Client.new
-      greetings
-      list_items
+      token_login
+      begin
+        @client = Monday::Client.new
+        list_items
+      rescue
+        print "Non authorized user"
+      end
     end
 
     def greetings
@@ -27,7 +31,7 @@ module Monday
 
     private
 
-    def authentication
+    def token_login
       if ENV["MONDAY_COM_TOKEN"].nil?
         puts "Monday.com token"
         print ">"
@@ -37,3 +41,4 @@ module Monday
     end
   end
 end
+

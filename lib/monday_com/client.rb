@@ -19,6 +19,5 @@ module Monday
       end
       boards.map { |board| Board.new(board, @user_id) }
     end
-
   end
 end
