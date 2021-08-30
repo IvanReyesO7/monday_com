@@ -2,15 +2,20 @@ require_relative 'queries'
 
 class Item 
   attr_reader :name, :status
+  
   def initialize(item)
     @id = item["id"]
     @name = item["name"]
-    @status = decode_status(status(item))
+    @status = decode_status(retrieve_status(item))
   end
 
-  def status(item)
+  def retrieve_status(item)
     status_hash = item["column_values"].select { |item| item["title"] == "Status" }[0]["value"]
     status_hash.nil? ? ":5" : status_hash.match(/index"(:\d)/)[1]
+  end
+
+  def retrieve_subitems
+    # TO DO
   end
 
   def decode_status(status_code)

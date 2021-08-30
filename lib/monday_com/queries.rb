@@ -7,7 +7,7 @@ class Query
     '{boards{id name subscribers {id name}}}'
   end
 
-  def self.items(board_id)
+  def self.items(board_id=1290326273)
     "{ boards (ids: #{board_id}) { items { id name column_values{ id title value } } } }"
   end
 
@@ -19,4 +19,3 @@ class Query
     "{ boards (ids: #{board_id}) { subscribers { id name }}}"
   end
 end
-

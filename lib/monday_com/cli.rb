@@ -7,6 +7,7 @@ module Monday
       token_login
       begin
         @client = Monday::Client.new
+        greetings
         list_items
       rescue
         print "Non authorized user"
@@ -18,14 +19,10 @@ module Monday
     end
 
     def list_items
-      @client.boards.each do |board|
-        puts board.name
-        puts "\nYour Items:"
-        puts "--" * 25
-        items = board.items
-        items.each do |item|
-          puts item.name
-        end
+      puts "Your items"
+      puts "-" * 50
+      @client.items.each do |item|
+        puts "#{item.name} ----- #{item.status}"
       end
     end
 
