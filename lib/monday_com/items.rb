@@ -1,6 +1,7 @@
 require_relative 'queries'
 
 class Item 
+  attr_reader :name, :status
   def initialize(item)
     @id = item["id"]
     @name = item["name"]

@@ -22,6 +22,3 @@ module Monday
 
   end
 end
-
-p ivan = Monday::Client.new
-

@@ -1,14 +1,14 @@
 require_relative 'items'
 
 class Board
-  attr_reader :id, :name
+  attr_reader :id, :name, :items
   def initialize(board, user_id)
     @id = board["id"]
     @name = board["name"]
-    @items = items(user_id)
+    @items = create_items(user_id)
   end
 
-  def items(user_id)
+  def create_items(user_id)
     request(Query.items(@id))["boards"][0]["items"]
     all_items = request(Query.items(@id))["boards"][0]["items"]
     my_items = []
