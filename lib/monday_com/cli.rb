@@ -9,8 +9,7 @@ module Monday
         @client = Monday::Client.new
         greetings
         list_items
-      rescue
-        print "Non authorized user"
+      rescue "Non authorized user"
       end
     end
 
@@ -23,6 +22,11 @@ module Monday
       puts "-" * 50
       @client.items.each do |item|
         puts "#{item.name} ----- #{item.status}"
+        if !item.subitems.empty?
+          item.subitems.each do |subitem|
+            puts "- #{subitem}"
+          end
+        end
       end
     end
 

@@ -23,5 +23,3 @@ module Monday
     end
   end
 end
-
-p request(Query.show_item(1622090344))

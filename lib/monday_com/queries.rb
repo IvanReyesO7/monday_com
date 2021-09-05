@@ -18,4 +18,8 @@ class Query
   def self.subscribers(board_id=1290326273)
     "{ boards (ids: #{board_id}) { subscribers { id name }}}"
   end
+
+  def self.subitems(item)
+    "query { items (ids: [#{item}]) { name }}"
+  end
 end
