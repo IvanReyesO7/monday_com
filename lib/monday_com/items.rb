@@ -1,13 +1,14 @@
 require_relative 'queries'
-require_relative 'subitem'
+require 'date'
 
 class Item 
-  attr_reader :name, :status, :subitems
+  attr_reader :name, :status, :subitems, :date
 
   def initialize(item)
     @id = item["id"]
     @name = item["name"]
     @status = decode_status(retrieve_status(item))
+    @date = retrieve_date(item)
     @subitems = retrieve_subitems(item)
   end
 
@@ -26,6 +27,18 @@ class Item
       []
     end
   end
+
+  def retrieve_date(item)
+    full_string = item["column_values"].select { |value| value["title"] == "Assignee" }[0]["value"]
+    date_matchdata = full_string.match(/\"changed_at\"\:\"(\d+)\-(\d+)\-(\d+)/)
+    if date_matchdata
+      return date = Date.new(date_matchdata[1].to_i, date_matchdata[2].to_i, date_matchdata[3].to_i)
+    else
+      return Date.new
+    end
+  end
+
+  private
 
   def decode_status(status_code)
     stauts_table = {
