@@ -4,4 +4,4 @@ require "bundler/setup"
 require "monday_com"
 
 
-Monday::CLI.new.call
+Monday::CLI.new.call(ARGV)

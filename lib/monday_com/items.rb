@@ -41,18 +41,19 @@ class Item
   private
 
   def decode_status(status_code)
-    stauts_table = {
-      ":0": "Working on it",
-      ":1": "Done",
-      ":2": "Stuck",
-      ":3": "Live in Production",
-      ":4": "Await Response",
-      ":5": "Not Started",
-      ":6": "Pull Request",
-      ":7": "Ready for Code Review",
-      ":9": "On Hold - Client request",
-      ":10": "Testing"
-    }
-    stauts_table[status_code.to_sym]
+    STATUS_TABLE[status_code.to_sym]
   end
+
+  STATUS_TABLE = {
+    ":0": "Working on it",
+    ":1": "Done",
+    ":2": "Stuck",
+    ":3": "Live in Production",
+    ":4": "Await Response",
+    ":5": "Not Started",
+    ":6": "Pull Request",
+    ":7": "Ready for Code Review",
+    ":9": "On Hold - Client request",
+    ":10": "Testing"
+  }
 end
