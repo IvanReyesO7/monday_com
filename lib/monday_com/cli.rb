@@ -35,8 +35,22 @@ module Monday
       rows = []
       @client.items.sort_by{ |item| item.date }.reverse.each do |item|
         rows << [item.name, item.date.strftime('%b %d'), item.status]
+        if !item.subitems.empty?
+          case item.subitems.count
+          when 1
+            item.subitems.each do |subitem|
+              rows << ["└- #{subitem}", "-", ""]
+            end
+          else
+            item.subitems[0..-1].each do |subitem|
+              rows << ["├- #{subitem}", "-", ""]
+            end
+          rows << ["└- #{item.subitems.last}", "-", ""]
+          end
+        end
       end
-      puts table = Terminal::Table.new(rows: rows)
+      pending = @client.items.count{ |item| item.status != 'Done' }
+      puts table = Terminal::Table.new(title: "You have (#{pending}) pending taks", headings: ['Tasks', 'Asignation date', 'Status'],rows: rows)
     end
 
     private
